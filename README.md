@@ -6,11 +6,22 @@ The easiest option to set up these scripts is to directly clone from the GitHub 
 
 _To set up the scripts on the CHPC:_
 	
-- Load git on the CHPC using `module load git`
-- Clone the repository from GitHub: `git clone git@github.com:SigmanGroup/input-generator`
-- Move the shell scripts (*e.g.*, `g16_inpgen.py`) to your ~/bin folder. You can get rid of everything else.
-- Give the scripts user executable permissions: `chmod u+x g16_inpgen.py` for example.
-
+- Load git on the CHPC using:
+  ```shell
+    module load git
+    ```
+- Clone the repository from GitHub:
+  ```shell
+    git clone git@github.com:SigmanGroup/input-generator
+    ```
+- Move the shell scripts (*e.g.*, `g16_inpgen.py`) to your ~/bin folder.
+  ```shell
+    mv g16_inpgen.py ~/bin/
+    ```
+- Give the scripts user executable permissions, for example:
+  ```shell
+    chmod u+x g16_inpgen.py
+    ```
 ## Instructions for the Python scripts:
 
 ### 1. Input Generator (g16_inpgen.py):
