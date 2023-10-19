@@ -13,7 +13,7 @@ _To set up the scripts on the CHPC:_
 
 ## Instructions for the Python scripts:
 
-### Input Generator (g16_inpgen.py):
+### 1. Input Generator (g16_inpgen.py):
 
 The `g16_inpgen.py` Python script is used to add Gaussian keywords to input files (.com), preparing them for execution.
 
@@ -42,3 +42,34 @@ The `g16_inpgen.py` Python script is used to add Gaussian keywords to input file
 - Single Point job to compute NMR shieldings and ChelpG charges:
   
   `#N Guess=Read Geom=Check Integral(Ultrafine) Density Pop=(ChelpG,ReadRadii) NMR wB97XD def2TZVP`
+
+### 2. Optimized Geometry Extractor to New Input File (log_to_com.py)
+
+The `log_to_com.py` Python script is designed to extract optimized geometries from output files (.log) and generate new input files for re-running Gaussian jobs. This can be helpful when optimization is completed, but single point calculations have failed for some reason.
+
+#### Running the Script:
+
+1. Run the script by executing the following command in the folder containing the output files (.log):
+    ```shell
+    python ~/bin/log_to_com.py
+    ```
+    The script will process all .log files in the folder, extracting optimized geometries from successfully terminated optimizations, and skipping files that have not terminated correctly. It will also provide a summary of how many new input files were generated and how many .log files have not terminated correctly.
+
+   **Note:** This process will overwrite your old .com files. Remember to re-run the `g16_inpgen.py` Python script to add the necessary keywords to your new input files.
+
+### 3. Optimized Geometry Extractor to Text File (log_to_txt.py)
+
+The `log_to_txt.py` Python script is designed for extracting optimized geometries from output files (.log) and generating text files suitable for publication.
+
+#### Running the Script:
+
+1. Execute the script by running the following command in the folder containing the output files (.log):
+    ```shell
+    python ~/bin/log_to_txt.py
+    ```
+    The script will process all .log files in the folder, extracting optimized geometries from successfully terminated optimizations, and skipping files that have not terminated correctly. It will also provide a summary of how many new text files were generated and how many .log files have not terminated correctly.
+
+   **Tips:** You can consider pushing the generated .txt files to a GitHub repository and use them as supplementary information for publication.
+
+   
+
