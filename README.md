@@ -54,6 +54,8 @@ The `g16_inpgen.py` Python script is used to add Gaussian keywords to input file
   
   `#N Guess=Read Geom=Check Integral(Ultrafine) Density Pop=(ChelpG,ReadRadii) NMR wB97XD def2TZVP`
 
+**Note:** Submit the calculations using the submission scripts provided [here](https://github.com/SigmanGroup/CHPC_Submit_Scripts/tree/main).
+
 ### 2. Optimized Geometry Extractor to New Input File (log_to_com.py)
 
 The `log_to_com.py` Python script is designed to extract optimized geometries from output files (.log) and generate new input files for re-running Gaussian jobs. This can be helpful when optimization is completed, but single point calculations have failed for some reason.
