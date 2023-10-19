@@ -67,8 +67,10 @@ The `log_to_com.py` Python script is designed to extract optimized geometries fr
     python ~/bin/log_to_com.py
     ```
     The script will process all .log files in the folder, extracting optimized geometries from successfully terminated optimizations, and skipping files that have not terminated correctly. It will also provide a summary of how many new input files were generated and how many .log files have not terminated correctly.
+   
+   **Note:** This process will overwrite your old .com files. Remember to re-run the `g16_inpgen.py` Python script to add the necessary keywords to your new input files.
+
    **WARNING:** Ensure to check for imaginary frequencies. This script does not perform imaginary frequency checks, please use [post_processing.bash](https://github.com/SigmanGroup/automated_workflow_for_SMILES_to_logs) for that.
-   **Note 2:** This process will overwrite your old .com files. Remember to re-run the `g16_inpgen.py` Python script to add the necessary keywords to your new input files.
 
 ### 3. Optimized Geometry Extractor to Text File (log_to_txt.py)
 
