@@ -2,7 +2,7 @@
 
 This repository serves as a central hub for a collection of scripts designed to streamline Gaussian calculations. It includes a python script for generating input files with selected keywords and two python scripts for extracting optimized Cartesian coordinates, which can be used to generate a new input file or exporting results to text files for publication.
 
-The easiest option to set up these scripts is to directly clone from the GitHub repository (the `git clone` command). Refer to Austin and Sierra's GitHub [instructions.](https://github.com/SigmanGroup/Git-Started)
+The easiest option to set up these scripts is to directly clone from the GitHub repository (the `git clone` command). 
 
 _To set up the scripts on the CHPC:_
 	
@@ -36,7 +36,7 @@ The `g16_inpgen.py` Python script is used to add Gaussian keywords to input file
     ```
    **Note:** Ensure that the input files contain the charge and multiplicity of the molecule, and the XYZ coordinates.
 
-2. An interactive script will open, providing options for changing the method, basis set, and keywords manually. For more details, refer to the 2023_03_08_Karas_Gaussian-Introduction workflow.
+2. An interactive script will open, providing options for changing the method, basis set, and keywords manually. 
 
 3. To proceed with the default level of theory, simply press Enter.
 
@@ -54,8 +54,6 @@ The `g16_inpgen.py` Python script is used to add Gaussian keywords to input file
   
   `#N Guess=Read Geom=Check Integral(Ultrafine) Density Pop=(ChelpG,ReadRadii) NMR wB97XD def2TZVP`
 
-**Note:** Submit the calculations using the submission scripts provided [here](https://github.com/SigmanGroup/CHPC_Submit_Scripts/tree/main).
-
 ### 2. Optimized Geometry Extractor to New Input File (log_to_com.py)
 
 The `log_to_com.py` Python script is designed to extract optimized geometries from output files (.log) and generate new input files for re-running Gaussian jobs. This can be helpful when optimization is completed, but single point calculations have failed for some reason.
@@ -70,8 +68,8 @@ The `log_to_com.py` Python script is designed to extract optimized geometries fr
    
    **Note:** This process will overwrite your old .com files. Remember to re-run the `g16_inpgen.py` Python script to add the necessary keywords to your new input files.
 
-   **WARNING:** Ensure to check for imaginary frequencies. This script does not perform imaginary frequency checks, please use [post_processing.bash](https://github.com/SigmanGroup/automated_workflow_for_SMILES_to_logs) for that.
-
+   **WARNING:** Ensure to check for imaginary frequencies. This script does not perform imaginary frequency checks.
+   
 ### 3. Optimized Geometry Extractor to Text File (log_to_txt.py)
 
 The `log_to_txt.py` Python script is designed for extracting optimized geometries from output files (.log) and generating text files suitable for publication.
