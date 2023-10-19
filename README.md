@@ -12,7 +12,7 @@ _To set up the scripts on the CHPC:_
     ```
 - Clone the repository from GitHub:
   ```shell
-    git clone git@github.com:SigmanGroup/input-generator
+    git clone git@github.com:SigmanGroup/input-generator.git
     ```
 - Move the shell scripts (*e.g.*, `g16_inpgen.py`) to your ~/bin folder.
   ```shell
