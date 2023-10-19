@@ -2,7 +2,7 @@
 
 This repository serves as a central hub for a collection of scripts designed to streamline Gaussian calculations. It includes a python script for generating input files with selected keywords and two python scripts for extracting optimized Cartesian coordinates, which can be used to generate a new input file or exporting results to text files for publication.
 
-The easiest option to set up these scripts is to directly clone from the GitHub repository (the `git clone` command). Refer to Sierra and Austin's GitHub [instructions.](https://github.com/SigmanGroup/Git-Started)
+The easiest option to set up these scripts is to directly clone from the GitHub repository (the `git clone` command). Refer to Austin and Sierra's GitHub [instructions.](https://github.com/SigmanGroup/Git-Started)
 
 _To set up the scripts on the CHPC:_
 	
