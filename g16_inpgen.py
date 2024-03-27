@@ -249,6 +249,9 @@ dir_path = os.getcwd()
 # Number of files:
 file_count = 0
 # Loop through all the files in the directory
+def clean_line(line):
+    return ','.join(re.split(r'\s+', line.strip()))
+
 for filename in os.listdir(dir_path):
     if filename.endswith(".com"):
         file_count +=1 
@@ -260,21 +263,17 @@ for filename in os.listdir(dir_path):
 
 # Find the index of the first line containing the search string
         start_index = 0
-        for i, line in enumerate(lines):
-            pattern = r'^[a-zA-Z ].*\s\s\s.*\d$'
-            match = re.match(pattern, line)
-            if match:
-                start_index = i-1
-                break
-        charge_spin = lines[start_index]
         end_index = 0
-        for i, line in reversed(list(enumerate(lines))):
-            pattern_end = r'^[a-zA-Z ].*\s\s\s.*\d$'
-            match = re.match(pattern_end, line)
-            if match:
-                end_index = i+1
-                break
+        pattern = r'^[a-zA-Z],-?\d+\.\d+,-?\d+\.\d+,-?\d+\.\d+$'
 
+        for i, line in enumerate(lines):
+            cleaned_line = clean_line(line)
+            if re.match(pattern, cleaned_line) and start_index == 0:
+                start_index = i-1
+            if re.match(pattern, cleaned_line):
+                end_index = i
+        
+        charge_spin = lines[start_index]
 # Remove all lines before the start_index and after the end_index
         lines = lines[start_index:end_index]
 
@@ -335,11 +334,12 @@ for filename in os.listdir(dir_path):
                 f.write(f"\n\n{name_without_ext}\n\n")
                 f.write(f"{charge_spin}")
                 f.write(f"\n")
-#                if need_radius:
-#                    for atom in need_radius:
-#                        if atom in [key for key in atoms_radius_dic]:
-#                            f.write(f"{atom} {atoms_radius_dic[atom]} \n")
-#                    f.write("\n")
+                if solvent_def != "": 
+                    if need_radius:
+                        for atom in need_radius:
+                            if atom in [key for key in atoms_radius_dic]:
+                                f.write(f"{atom} {atoms_radius_dic[atom]} \n")
+                        f.write("\n")
                 f.write(f"--Link1--\n%NProcShared=24\n%Mem=64GB\n")
                 f.write(f"%chk={name_without_ext}.chk\n")
                 if SCRF_def:
@@ -366,11 +366,11 @@ for filename in os.listdir(dir_path):
                     f.write(f"\n\n{name_without_ext}\n\n")
                     f.write(f"{charge_spin}")
                     f.write(f"\n")
-#                    if need_radius:
-#                        for atom in need_radius:
-#                            if atom in [key for key in atoms_radius_dic]:
-#                                f.write(f"{atom} {atoms_radius_dic[atom]} \n")
-#                        f.write("\n")
+                    if need_radius:
+                        for atom in need_radius:
+                            if atom in [key for key in atoms_radius_dic]:
+                                f.write(f"{atom} {atoms_radius_dic[atom]} \n")
+                        f.write("\n")
                     if "0" in prop_list or "2" in prop_list:
                         f.write(f"--Link1--\n%NProcShared=24\n%Mem=64GB\n")
                         f.write(f"%chk={name_without_ext}.chk\n")
